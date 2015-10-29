@@ -1,2 +1,21 @@
-<%= raise %>
-<%= @response %>
+<div class = 'item-table'>
+  <table class = 'table table-hover'>
+    <thead class='pink'>
+      <tr>
+        <th>Title</th>
+        <th>Size/Quantity</th>
+        <th>Price</th>
+        <th>Add to Project</tr>
+    </thead>
+    <tbody>
+      <% @response["ItemSearchResponse"]["Items"]["Item"].each do |item| %>
+        <tr>
+          <td class = "blue"><%= link_to "#{item_title(item)}", "#{item_url(item)}", :target => "_blank" %></td>
+          <td><%= item_size(item) %></td>
+          <td><%= item_price(item) %></td>
+          <td>button goes here</td>
+        </tr>
+      <% end  %>
+    </tbody>
+  </table>
+</div>

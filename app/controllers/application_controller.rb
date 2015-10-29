@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :current_user, :total_shelters, :total_donors, :total_projects, :total_donated, :total_volunteers
+  before_action :current_user, :total_shelters, :total_donors, :total_projects, :total_amount_donated, :total_volunteers
   protect_from_forgery with: :exception
 
   def current_user
@@ -26,11 +26,12 @@ class ApplicationController < ActionController::Base
     @approved_project_count = Project.where(project_approval: 'approved').count
   end
 
-  def total_donated
-    @all_gifts_approved = Gift.where(payment_status: 'approved')
-    @approved_gift_total = 0
-    @all_gifts_approved.each do |gift|
-      @approved_gift_total += gift.amount
+  def total_amount_donated
+    @active_projects = Project.where('project_approval = ? AND funding_status = ?', 'approved', 'not funded')
+    @total_given = 0
+    @active_projects.each do |project|
+      @total_given+= project.total_donated
     end
+    @total_given = '%.2f' % [@total_given]
   end
 end

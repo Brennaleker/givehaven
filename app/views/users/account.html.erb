@@ -1,13 +1,13 @@
-<div class = 'col-md-5 profile'>
-    <h1>Account Information</h1>
-    <p><span class = "emphasis">Username:</span> <%= @user.username %> </p>
-    <p><span class = "emphasis">Email:</span> <%= @user.email %> </p>
-    <p><span class = "emphasis">First Name:</span> <%= @user.first_name %> </p>
-    <p><span class = "emphasis">Last Name:</span> <%= @user.last_name %> </p>
-    <%= link_to 'Edit', edit_user_path(@user.username), class: 'txt-right' %>
+<div class = 'col-md-7 profile'>
+  <h1>Account Information</h1>
+  <p><span class = "emphasis">Username:</span> <%= @user.username %> </p>
+  <p><span class = "emphasis">Email:</span> <%= @user.email %> </p>
+  <p><span class = "emphasis">First Name:</span> <%= @user.first_name %> </p>
+  <p><span class = "emphasis">Last Name:</span> <%= @user.last_name %> </p>
+  <%= link_to 'Edit', edit_user_path(@user.username), class: 'txt-right' %>
 </div>
 <% if Organization.find_by user_id: @current_user.id %>
-  <div class = 'col-md-5 profile'>
+  <div class = 'col-md-7 profile'>
       <h1><%= @organization.name %></h1>
       <p><%=image_tag @organization.image %></p>
       <p> <span class = "emphasis">Phone:</span> <%= @organization.contact_phone %> </p>
@@ -29,7 +29,7 @@
 <% end %>
 
 <% if Volunteer.find_by user_id: @current_user.id %>
-  <div class = 'col-md-5 profile'>
+  <div class = 'col-md-7 profile'>
       <h1>Volunteer Information</h1>
       <p><span class = "emphasis">Role:</span> <%= @volunteer.role %></p>
       <p><span class = "emphasis">Bio:</span> <%= @volunteer.bio %></p>

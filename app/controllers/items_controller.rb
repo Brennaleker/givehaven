@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     # locate_item
     # @response = AmazonAPI.search.body
     xml_response = AmazonAPI.search.body
-    parse_response(xml_response)
+    render json: parse_response(xml_response), status: :ok
   end
 
   private

@@ -28,7 +28,7 @@ before_action :logged_in, except: [:index, :show]
     @project.organization_id = @organization.id
     @project.expires_on = DateTime.now + 3.month
     if @project.save
-      redirect_to my_projects_path(@current_user.username)
+      redirect_to item_search_path(@current_user.username, @project.id)
     else
       redirect_to new_project_path
     end

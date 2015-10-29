@@ -16,24 +16,6 @@ ActiveRecord::Schema.define(version: 20151020181959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "gifts", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.integer  "amount"
-    t.string   "cc_number"
-    t.string   "cc_name"
-    t.date     "cc_exp"
-    t.integer  "cc_ccv"
-    t.string   "cc_address_1"
-    t.string   "cc_address_2"
-    t.string   "cc_city"
-    t.string   "cc_state"
-    t.integer  "cc_postal_code"
-    t.string   "payment_status", default: "awaiting project completion"
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
-  end
-
   create_table "items", force: :cascade do |t|
     t.string   "project_id"
     t.string   "name"
@@ -78,7 +60,7 @@ ActiveRecord::Schema.define(version: 20151020181959) do
     t.float    "total_requested"
     t.text     "organization_details"
     t.text     "project_details"
-    t.datetime "expires_on",           default: '2016-01-29 03:42:03'
+    t.datetime "expires_on",           default: '2016-01-29 19:09:01'
     t.datetime "created_at",                                                   null: false
     t.datetime "updated_at",                                                   null: false
   end

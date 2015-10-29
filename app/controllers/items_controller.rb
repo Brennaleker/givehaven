@@ -10,13 +10,14 @@ class ItemsController < ApplicationController
     # locate_item
     # @response = AmazonAPI.search.body
     xml_response = AmazonAPI.search.body
-    @response = Nokogiri::XML.parse(xml_response)
-    @response = Hash.from_xml(@response.to_s)
+    parse_response(xml_response)
   end
 
-
   private
-
+  def parse_response(response)
+    @response = Nokogiri::XML.parse(response)
+    @response = Hash.from_xml(@response.to_s)
+  end
 
 
 end

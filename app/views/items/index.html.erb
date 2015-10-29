@@ -1,2 +1,8 @@
-<%= @response %>
-<%= raise %>
+<% @response.each do |item| %>
+  <% x = item.last %>
+  <%=  x.class %>
+  <%= x %>
+  <br>
+  <br>
+  <br>
+<% end %>

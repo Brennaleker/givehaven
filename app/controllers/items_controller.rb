@@ -16,10 +16,8 @@ class ItemsController < ApplicationController
     # redirect_to results_path(@current_user.username, params[:id], query)
   end
 
-  # def new
-  #   locate_project
-  # end
-
+  def create
+  end
 
   private
   def parse_response(response)

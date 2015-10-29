@@ -3,5 +3,5 @@ class Item < ActiveRecord::Base
   belongs_to :project
 
   #---------------validations----------------------
-  validates :name, :url, :description, :quantity, :price_per, :total_cost, presence: true
+  validates :title, :url, :quantity, :size, :price, :amazon_id, presence: true
 end

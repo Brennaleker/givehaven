@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20151020181959) do
 
   create_table "items", force: :cascade do |t|
     t.string   "project_id"
-    t.string   "name"
-    t.string   "description"
+    t.string   "title"
+    t.string   "amazon_id"
     t.string   "url"
     t.integer  "quantity"
-    t.float    "price_per"
+    t.float    "price"
     t.float    "total_cost"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20151020181959) do
     t.float    "total_requested"
     t.text     "organization_details"
     t.text     "project_details"
-    t.datetime "expires_on",           default: '2016-01-29 19:09:01'
+    t.datetime "expires_on",           default: '2016-01-29 22:27:44'
     t.datetime "created_at",                                                   null: false
     t.datetime "updated_at",                                                   null: false
   end

@@ -2,7 +2,9 @@
   <div class = 'project-top'>
     <div class = 'col-sm-4 project-img'>
       <%= image_tag @project.image %>
-      <p><span class = 'emphasis'>Days remaining: </span><%= days_remaining(@project) %></p>
+      <p class = 'emphasis'>
+        Share this project! <%= social_share_button_tag("Help a shelter @ GiveHaven.org!") %>
+      </p>
     </div>
     <div class = 'col-sm-8 project-title'>
       <h1 class ='pink'><%= @project.title %></h1>
@@ -14,14 +16,15 @@
     <div class = 'col-sm-4 project-title'>
       <p><span class = 'emphasis'>Location: <%= image_tag 'location.png' %></span>
       <%= @organization.shipping_city %>, <%= @organization.shipping_state %></p>
+      <p><span class = 'emphasis'>Days remaining: </span><%= days_remaining(@project) %></p>
       <%= form_tag charges_path do %>
-  <script src="https://checkout.stripe.com/checkout.js"       class="stripe-button"
-  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-  value="Donate now"
-  data-description="GiveHaven"
-  data-amount="500"
-  data-locale="auto"></script>
-<% end %>
+        <script src="https://checkout.stripe.com/checkout.js"       class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        value="Donate now"
+        data-description="GiveHaven"
+        data-amount="500"
+        data-locale="auto"></script>
+      <% end %>
     </div>
   </div>
 

@@ -48,7 +48,7 @@ before_action :logged_in, except: [:index, :show]
   private
 
   def locate_project
-    @project = Project.find_by(title: params[:title])
+    @project = Project.find_by(id: params[:id])
   end
 
   def locate_my_organization

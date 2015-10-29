@@ -1,4 +1,5 @@
 require "amazon_api"
+require "nokogiri"
 include GiveHavenAPIs
 
 class ItemsController < ApplicationController
@@ -7,8 +8,10 @@ class ItemsController < ApplicationController
   def index
     # search
     # locate_item
-    @response = AmazonAPI.search.to_h
-    # @response = results.to_h
+    # @response = AmazonAPI.search.body
+    xml_response = AmazonAPI.search.body
+    @response = Nokogiri::XML.parse(xml_response)
+    @response = Hash.from_xml(@response.to_s)
   end
 
   # def search

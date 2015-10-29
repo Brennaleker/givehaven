@@ -2,7 +2,7 @@
 <div class='responsive'>
   <% @ending_soon.each do |project| %>
   <div class = 'col-sm-3 slide-tile'>
-      <a href = '/projects/<%= project.title %>/<%= project.id %>'>
+      <a href = '/projects/<%= @current_user.username %>/<%= project.id %>'>
       <p class = 'emphasis pink'><%= project.title %></p>
           <div class = 'col-lg-6'>
             <div class = 'image-container'>

@@ -18,4 +18,5 @@
 //= require bootstrap-sprockets
 //= require rails.validations
 //= require jquery.slick
+//= require social-share-button
 //= require_tree .

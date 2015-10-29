@@ -20,8 +20,8 @@ Rails.application.routes.draw do
 
   #projects
   resources :projects, except: [:show, :edit]
-  get '/projects/:title/:id', to: 'projects#show', as: 'show_project'
-  get '/projects/:title/:id/edit', to: 'projects#edit', as: 'edit_project'
+  get '/projects/:username/:id', to: 'projects#show', as: 'show_project'
+  get '/projects/:username/:id/edit', to: 'projects#edit', as: 'edit_project'
   get '/account/:username/projects', to: 'projects#my_projects', as: 'my_projects'
 
   #sessions

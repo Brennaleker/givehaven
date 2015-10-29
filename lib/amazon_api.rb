@@ -25,7 +25,7 @@ module GiveHavenAPIs
         "AWSAccessKeyId" => ENV["AWS_PRODUCT_KEY"],
         "AssociateTag" => "give0b4-20",
         "SearchIndex" => "All",
-        "Keywords" => "toilet paper",
+        "Keywords" => "#{@query}",
         "ResponseGroup" => "ItemAttributes"
       }
 
@@ -35,7 +35,7 @@ module GiveHavenAPIs
     end
       # Generate the canonical query
     def self.canonical_query_string
-        params.sort.collect do |key, value|
+      params.sort.collect do |key, value|
         [URI.escape(key.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")), URI.escape(value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))].join('=')
       end.join('&')
     end
@@ -50,7 +50,8 @@ module GiveHavenAPIs
       Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), AWS_SECRET_KEY, string_to_sign)).strip()
     end
     # Generate the signed URL
-    def self.search
+    def self.search(query)
+      @query = query
       url = "http://#{ENDPOINT}#{REQUEST_URI}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
       results = HTTParty.get(url)
     end

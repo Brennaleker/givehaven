@@ -5,22 +5,21 @@ include GiveHavenAPIs
 class ItemsController < ApplicationController
   before_action :logged_in
 
+  def search_items
+
+  end
+
   def search
-  end
-
-  def new
-    locate_project
-  end
-
-  def index
-    # search
-    # locate_item
-    # @response = AmazonAPI.search.body
-    xml_response = AmazonAPI.search.body
-    # render json: parse_response(xml_response), status: :ok
+    query = params[:query]
+    xml_response = AmazonAPI.search(query).body
     @response = parse_response(xml_response)
-    # @response = Hash.from_xml(xml_response).to_json
+    # redirect_to results_path(@current_user.username, params[:id], query)
   end
+
+  # def new
+  #   locate_project
+  # end
+
 
   private
   def parse_response(response)

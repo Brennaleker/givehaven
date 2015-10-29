@@ -1,19 +1,35 @@
 module ItemsHelper
 
   def item_number(item)
-    @asin = item["ASIN"]
+    if item["ASIN"]
+     @asin = item["ASIN"]
+    else
+      @asin = "Unavailable"
+    end
   end
 
   def item_url(item)
-    @url = item["DetailPageURL"]
+    if item["DetailPageURL"]
+      @url = item["DetailPageURL"]
+    else
+      @url = "Unavailable"
+    end
   end
 
   def item_price(item)
-    @price = item["ItemAttributes"]["ListPrice"]["Amount"].to_f/100
+    if  item["ItemAttributes"]["ListPrice"]
+      @price = item["ItemAttributes"]["ListPrice"]["Amount"].to_f/100
+    else
+      @price = "Unavailable"
+    end
   end
 
   def item_size(item)
-    @size = item["ItemAttributes"]["Size"]
+    if item["ItemAttributes"]["Size"]
+      @size = item["ItemAttributes"]["Size"]
+    else
+      @size = "Unavailable"
+    end
   end
 
   def item_title(item)

@@ -1,8 +1,39 @@
+<div class = 'item-table'>
+  <table class = 'table table-hover'>
+    <thead class='pink'>
+      <tr>
+        <th>Title</th>
+        <th>Size/Quantity</th>
+        <th>Price</th>
+        <th>Add to Project</tr>
+    </thead>
+    <tbody>
+      <% @response["ItemSearchResponse"]["Items"]["Item"].each do |item| %>
+        <tr>
+          <td class = "blue"><%= link_to "#{item_title(item)}", "#{item_url(item)}", :target => "_blank" %></td>
+          <td><%= item_size(item) %></td>
+          <td><%= item_price(item) %></td>
+          <td class = "form">
+            <% form_for :item, url: items_path do |f| %>
+            <div class = "form-group">
+              <%= f.label "Quantity:" %>
+              <%= f.text_field :quantity, class: 'form-control', autofocus: true  %>
+            </div>
+            <%= f.submit 'Add', class: 'btn form-btn' %>
+            <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end  %>
+    </tbody>
+  </table>
+</div>
+
 <div class = 'form center-form'>
-  <%= form_tag({controller:'items', action: 'search'}, method: "get") do %>
+  <%= form_tag(search_path) do %>
     <div class="form-group">
       <%= text_field_tag :query, params[:query], id: 'search_field', class: 'form-control', placeholder: "type keyword(s) here" %>
       </div>
-    <%= submit_tag "Search Amazon", class: 'btn form-btn' %>
+    <%= submit_tag "Search Again", class: 'btn form-btn' %>
   <% end %>
 </div>

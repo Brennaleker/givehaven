@@ -12,9 +12,10 @@ Rails.application.routes.draw do
   get '/how_it_works', to: 'home#how_it_works', as: 'how_it_works'
 
   #item
-  get '/projects/:username/:id/wishlist', to: 'items#new', as: 'new_items'
+  resources :items, only: [:create, :destroy]
   get '/projects/:username/:id/test', to: 'items#index', as: 'test'
-  get '/projects/:username/:id/item_search', to: 'items#search', as: 'item_search'
+  get '/projects/:username/:id/item_search', to: 'items#search_items', as: 'item_search'
+  post '/projects/:username/:id/search', to: 'items#search', as: 'search'
 
   #organizations
   resources :organizations, only: [:create, :update, :new, :index]

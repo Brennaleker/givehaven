@@ -7,5 +7,5 @@ CarrierWave.configure do |config|
     :secret_access_key  => ENV["AWS_S3_SECRET_ACCESS_KEY"],
     :region             => ENV["AWS_S3_REGION"]
   }
-
+config.aws_public = false
 end

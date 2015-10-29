@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     # @response = AmazonAPI.search.body
     xml_response = AmazonAPI.search.body
     render json: parse_response(xml_response), status: :ok
+    @response = parse_response(xml_response)
   end
 
   private

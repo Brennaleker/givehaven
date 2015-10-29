@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/how_it_works', to: 'home#how_it_works', as: 'how_it_works'
 
   #item
-  get '/projects/:title/:id/wishlist', to: 'items#index', as: 'wishlist'
+  get '/projects/:username/:id/wishlist', to: 'items#index', as: 'wishlist'
 
   #organizations
   resources :organizations, only: [:create, :update, :new, :index]

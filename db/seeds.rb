@@ -78,7 +78,7 @@ users = [
     activated:true
   },
   {
-    username: 'mickey', email: 'mickey@mail.com', password: 'password', first_name: 'Mickey', last_name: 'Mouse', donor: true,
+    username: 'tenth', email: 'doctor@mail.com', password: 'password', first_name: 'The', last_name: 'Doctor', donor: true,
     activated:true
   },
   {

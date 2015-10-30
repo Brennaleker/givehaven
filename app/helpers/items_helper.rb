@@ -18,7 +18,7 @@ module ItemsHelper
 
   def item_price(item)
     if  item["ItemAttributes"]["ListPrice"]
-      @price = item["ItemAttributes"]["ListPrice"]["Amount"].to_f/100
+      @price = (item["ItemAttributes"]["ListPrice"]["Amount"].to_f/100).round(2)
     else
       @price = "Unavailable"
     end

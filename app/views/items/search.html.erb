@@ -12,12 +12,17 @@
         <tr>
           <td class = "blue"><%= link_to "#{item_title(item)}", "#{item_url(item)}", :target => "_blank" %></td>
           <td><%= item_size(item) %></td>
-          <td><%= item_price(item) %></td>
+          <td><%= number_to_currency(item_price(item)) %></td>
           <td>
             <%= form_for :item, url: items_path do |f| %>
             <div class = "form-group">
               <%= f.label "Quantity:" %>
               <%= f.text_field :quantity, class: 'form-control', autofocus: true  %>
+              <%= f.hidden_field :title, value: item_title(item)  %>
+              <%= f.hidden_field :project_id, value: params[:id]  %>
+              <%= f.hidden_field :amazon_id, value: item_number(item)  %>
+              <%= f.hidden_field :price, value: item_price(item) %>
+              <%= f.hidden_field :url, value: item_url(item) %>
             </div>
           </td>
           <td>
@@ -30,7 +35,9 @@
     </tbody>
   </table>
 </div>
-
+<div class = 'center'>
+  <%= link_to 'Review my project', show_project_path(@current_user.username, params[:id]), class: 'btn blue-btn' %>
+</div>
 <div class = 'form center-form'>
   <%= form_tag(search_path) do %>
     <div class="form-group">

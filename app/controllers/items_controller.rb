@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @item = Item.new(item_params[:item])
+    @item.total_cost = @item.quantity * @item.price
+    @item.save
+    redirect_to item_search_path(@current_user.username, @item.project_id)
   end
 
   private
@@ -27,6 +31,10 @@ class ItemsController < ApplicationController
 
   def locate_project
     @project = Project.find_by(id: params[:id])
+  end
+
+  def item_params
+    params.permit(item: [:title, :amazon_id, :project_id, :quantity, :price, :total_cost, :url])
   end
 
 end

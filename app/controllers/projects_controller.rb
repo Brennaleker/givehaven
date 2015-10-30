@@ -13,8 +13,13 @@ before_action :logged_in, except: [:index, :show]
   def show
     @project = Project.find(params[:id])
     locate_organization
+    @items = @project.items
     @percent_complete = (@project.total_donated/@project.total_requested*100).ceil
     @percent_remaining = 100 - @percent_complete
+    if @project.items.count > 0
+      get_subtotal(@project)
+    end
+
   end
 
   def new
@@ -60,6 +65,13 @@ before_action :logged_in, except: [:index, :show]
   end
 
   def project_params
-    params.permit(project: [:title, :description, :project_details, :organization_details, :image, :user_id, :ammount])
+    params.permit(project: [:title, :description, :project_details, :organization_details, :image, :user_id, :amount])
+  end
+
+  def get_subtotal(project)
+    @subtotal = 0
+    project.items.each do |item|
+      @subtotal+=item.total_cost
+    end
   end
 end

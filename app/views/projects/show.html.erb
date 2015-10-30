@@ -44,4 +44,39 @@
   <p><%= @project.organization_details %></p>
   <h3 class = 'pink'>Our Project</h3>
   <p><%= @project.project_details %></p>
+  <h3 class = 'pink'>Items Requested</h3>
+  <div class = 'item-table'>
+    <table class = 'table table-hover'>
+      <thead class='blue'>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price Each</th>
+          <th>Line Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.title %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.price %></td>
+            <td><%= item.total_cost %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="4" class='txt-right'>Subtotal: <%= number_to_currency(@subtotal) %> </td>
+        </tr>
+        <tr>
+          <td colspan="4" class='txt-right'>Estimated Transaction Fees: </td>
+        </tr>
+        <tr>
+          <td colspan="4" class='txt-right'>Total: </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <% if @current_user.username == params[:username] %>
+  <%= link_to "Add Items", item_search_path(params[:username], params[:id]), class: 'btn blue-btn' %>
+  <% end %>
 </div>

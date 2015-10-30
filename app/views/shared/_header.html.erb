@@ -19,7 +19,7 @@
 				<span class = 'pink'>♥ </span> <%= @donor_count %> Donors
 			</li>
 			<li>
-			<span class = 'pink'>♥ </span>	$<%= @total_given %> given
+			<span class = 'pink'>♥ </span> <%= number_to_currency(@total_given) %> given
 			</li>
 		</ul>
 	</div>

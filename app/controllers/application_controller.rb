@@ -30,8 +30,7 @@ class ApplicationController < ActionController::Base
     @active_projects = Project.where('project_approval = ? AND funding_status = ?', 'approved', 'not funded')
     @total_given = 0
     @active_projects.each do |project|
-      @total_given+= project.total_donated
+      @total_given += project.total_donated
     end
-    @total_given = '%.2f' % [@total_given]
   end
 end

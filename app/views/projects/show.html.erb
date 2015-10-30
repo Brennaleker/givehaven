@@ -60,8 +60,8 @@
           <tr>
             <td><%= item.title %></td>
             <td><%= item.quantity %></td>
-            <td><%= item.price %></td>
-            <td><%= item.total_cost %></td>
+            <td><%= number_to_currency(item.price) %></td>
+            <td><%= number_to_currency(item.total_cost) %></td>
           </tr>
         <% end %>
         <tr>
@@ -76,7 +76,7 @@
       </tbody>
     </table>
   </div>
-  <% if @current_user.username == params[:username] %>
+  <% if @current_user && @current_user.username == params[:username] %>
   <%= link_to "Add Items", item_search_path(params[:username], params[:id]), class: 'btn blue-btn' %>
   <% end %>
 </div>

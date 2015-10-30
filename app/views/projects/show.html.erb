@@ -65,13 +65,16 @@
           </tr>
         <% end %>
         <tr>
-          <td colspan="4" class='txt-right'>Subtotal: <%= number_to_currency(@subtotal) %> </td>
+          <td colspan="3" class='txt-right'>Subtotal: </td>
+          <td><%= number_to_currency(@subtotal) %></td>
         </tr>
         <tr>
-          <td colspan="4" class='txt-right'>Estimated Transaction Fees: </td>
+          <td colspan="3" class='txt-right'>Estimated Transaction Fees: </td>
+          <td></td>
         </tr>
         <tr>
-          <td colspan="4" class='txt-right'>Total: </td>
+          <td colspan="3" class='txt-right emphasis'>Total: </td>
+          <td class='emphasis'></td>
         </tr>
       </tbody>
     </table>

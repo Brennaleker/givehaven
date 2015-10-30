@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20151020181959) do
     t.float    "total_requested"
     t.text     "organization_details"
     t.text     "project_details"
-    t.datetime "expires_on",           default: '2016-01-30 00:23:30'
+    t.datetime "expires_on",           default: '2016-01-30 04:17:22'
     t.datetime "created_at",                                                   null: false
     t.datetime "updated_at",                                                   null: false
   end

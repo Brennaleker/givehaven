@@ -16,10 +16,6 @@ before_action :logged_in, except: [:index, :show]
     @items = @project.items
     @percent_complete = (@project.total_donated/@project.total_requested*100).ceil
     @percent_remaining = 100 - @percent_complete
-    if @project.items.count > 0
-      get_subtotal(@project)
-    end
-
   end
 
   def new
@@ -32,6 +28,7 @@ before_action :logged_in, except: [:index, :show]
     @project = Project.create(project_params[:project])
     @project.organization_id = @organization.id
     @project.expires_on = DateTime.now + 3.month
+    @project.save
     if @project.save
       redirect_to item_search_path(@current_user.username, @project.id)
     else
@@ -50,6 +47,11 @@ before_action :logged_in, except: [:index, :show]
     redirect_to my_projects_path(@current_user.username)
   end
 
+  def update_status
+    locate_project
+    @project.update(project_status: 'submitted')
+  end
+
   private
 
   def locate_project
@@ -66,12 +68,5 @@ before_action :logged_in, except: [:index, :show]
 
   def project_params
     params.permit(project: [:title, :description, :project_details, :organization_details, :image, :user_id, :amount])
-  end
-
-  def get_subtotal(project)
-    @subtotal = 0
-    project.items.each do |item|
-      @subtotal+=item.total_cost
-    end
   end
 end

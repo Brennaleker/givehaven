@@ -23,11 +23,11 @@ class ApplicationController < ActionController::Base
   end
 
   def total_projects
-    @approved_project_count = Project.where(project_approval: 'approved').count
+    @approved_project_count = Project.where(project_status: 'approved').count
   end
 
   def total_amount_donated
-    @active_projects = Project.where('project_approval = ? AND funding_status = ?', 'approved', 'not funded')
+    @active_projects = Project.where('project_status = ? AND funding_status = ?', 'approved', 'not funded')
     @total_given = 0
     @active_projects.each do |project|
       @total_given += project.total_donated

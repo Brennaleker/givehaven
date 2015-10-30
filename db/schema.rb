@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20151020181959) do
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
-    t.string   "project_id"
+    t.integer  "project_id"
     t.string   "title"
     t.string   "amazon_id"
     t.string   "url"
@@ -52,15 +52,17 @@ ActiveRecord::Schema.define(version: 20151020181959) do
     t.string   "title"
     t.string   "image"
     t.text     "description"
-    t.string   "project_approval",     default: "pending"
+    t.string   "project_status",       default: "pending"
     t.string   "funding_status",       default: "not funded"
     t.string   "shipping_status",      default: "awaiting project completion"
+    t.float    "subtotal"
+    t.float    "processing_fees"
     t.float    "total_donated",        default: 0.0
     t.float    "total_remaining"
     t.float    "total_requested"
     t.text     "organization_details"
     t.text     "project_details"
-    t.datetime "expires_on",           default: '2016-01-30 04:17:22'
+    t.datetime "expires_on",           default: '2016-01-30 17:56:55'
     t.datetime "created_at",                                                   null: false
     t.datetime "updated_at",                                                   null: false
   end

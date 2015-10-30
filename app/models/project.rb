@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   has_many :items
 
   #---------------validations----------------------
-  validates :title, :description, :project_approval, :funding_status, :shipping_status, :project_details, :organization_details, :expires_on, presence: true
+  validates :title, :description, :project_status, :funding_status, :shipping_status, :project_details, :organization_details, :expires_on, presence: true
 
   validates :description, length: { maximum: 250 }
   validates :title, length: { maximum: 60 }

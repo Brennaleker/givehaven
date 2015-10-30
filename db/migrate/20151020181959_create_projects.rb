@@ -5,9 +5,11 @@ class CreateProjects < ActiveRecord::Migration
       t.string :title
       t.string :image
       t.text :description
-      t.string :project_approval, default: 'pending'
+      t.string :project_status, default: 'pending'
       t.string :funding_status, default: 'not funded'
       t.string :shipping_status, default: 'awaiting project completion'
+      t.float :subtotal
+      t.float :processing_fees
       t.float :total_donated, default: 0
       t.float :total_remaining
       t.float :total_requested

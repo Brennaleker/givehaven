@@ -105,8 +105,18 @@ p {
   color: #f14392;
 }
 
+.pink a{
+  color: #f14392;
+  text-decoration: none;
+}
+
 .blue {
   color: #4392f1;
+}
+
+.blue a{
+  color: #4392f1;
+  text-decoration: none;
 }
 
 .orange {
@@ -261,7 +271,7 @@ height: 75px;
   border: 4px solid #4392f1;
 }
 
-.slide-tile a, .slide-tile a:active, .slide-tile a:hover {
+.slide-tile a, .slide-tile a:active, .slide-tile a:hover, .slide-tile:hover, .slide-tile:active {
   text-decoration: none;
 }
 

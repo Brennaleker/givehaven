@@ -5,6 +5,9 @@
       <p class = 'blue emphasis'>
         Share this project! <%= social_share_button_tag("Help a shelter @ GiveHaven.org!") %>
       </p>
+      <% if @current_user && @current_user.username == params[:username] %>
+        <p class = 'blue'><%= link_to 'Edit Project Details', edit_project_path(@current_user.username, @project.id) %></p>
+      <% end %>
       <br>
     </div>
     <div class = 'col-sm-8 project-title'>
@@ -31,10 +34,10 @@
 
   <div class = 'progress'>
     <div class = 'progress-bar-stiped progress-bar blue-bar' role='progressbar' style='width:<%= @percent_complete %>%'>
-      $<%= @project.total_donated %> raised!
+      <%= number_to_currency(@project.total_donated) %> raised!
     </div>
     <div class = 'progress-bar-striped progress-bar blue-bar' role='progressbar' style='width:<%= @percent_remaining %>%'>
-      Only $<%= @project.total_remaining %> to go!
+      Only <%= number_to_currency(@project.total_remaining) %> to go!
     </div>
   </div>
   <div class = 'thick-line'></div>
@@ -65,16 +68,17 @@
           </tr>
         <% end %>
         <tr>
-          <td colspan="3" class='txt-right'>Subtotal: </td>
-          <td><%= number_to_currency(@subtotal) %></td>
+          <td colspan="3" class="txt-right">Subtotal: </td>
+          <td><%= number_to_currency(@project.subtotal) %></td>
         </tr>
         <tr>
-          <td colspan="3" class='txt-right'>Estimated Transaction Fees: </td>
+          <td colspan="3" class="txt-right">Estimated Transaction Fees:</td>
+          <td> <%= number_to_currency(@project.processing_fees) %></td>
           <td></td>
         </tr>
         <tr>
-          <td colspan="3" class='txt-right emphasis'>Total: </td>
-          <td class='emphasis'></td>
+          <td colspan="3" class="txt-right emphasis">Total:</td>
+          <td class='emphasis'><%= number_to_currency(@project.total_requested) %></td>
         </tr>
       </tbody>
     </table>

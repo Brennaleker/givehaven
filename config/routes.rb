@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   #item
   resources :items, only: [:create, :destroy]
-  get '/projects/:username/:id/test', to: 'items#index', as: 'test'
   get '/projects/:username/:id/item_search', to: 'items#search_items', as: 'item_search'
   post '/projects/:username/:id/search', to: 'items#search', as: 'search'
 
